@@ -80,85 +80,100 @@ typedef NS_ENUM(NSInteger, XCChainRequestState) {
     // 停止当前网络请求
     [self.currentRequest stop];
     // 添加网络请求信号量和网络请求处理信号量+1，以便于start中的while循环进行下去
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self requestFailed:self.currentRequest];
-    });
+    dispatch_semaphore_signal(self.requestProcessSemaphore);
     dispatch_semaphore_signal(self.requestSemaphore);
     dispatch_semaphore_signal(self.requestArrayLock);
 }
 
 - (void)dealloc {
     NSLog(@"dealloc调用，被销毁");
-    [self stop];
 }
 
 - (void)start {
+    __weak typeof(self) weakSelf = self;
     dispatch_async(self.processRequestQueue, ^{
-        while (self.currentState == XCChainRequestStarted) {
+        while (weakSelf && weakSelf.currentState == XCChainRequestStarted) {
             
             // 等待提交的请求
-            dispatch_semaphore_wait(self.requestSemaphore, DISPATCH_TIME_FOREVER);
+            dispatch_semaphore_wait(weakSelf.requestSemaphore, DISPATCH_TIME_FOREVER);
+            
             // 等待当前网络请求执行完成
-            dispatch_semaphore_wait(self.requestProcessSemaphore, DISPATCH_TIME_FOREVER);
+            if (weakSelf) {
+                dispatch_semaphore_wait(weakSelf.requestProcessSemaphore, DISPATCH_TIME_FOREVER);
+            } else {
+                return;
+            }
+            
             // 网络请求队列加锁
-            dispatch_semaphore_wait(self.requestArrayLock, DISPATCH_TIME_FOREVER);
+            if (weakSelf) {
+                dispatch_semaphore_wait(weakSelf.requestArrayLock, DISPATCH_TIME_FOREVER);
+            } else {
+                return;
+            }
+            
             
             // 由于会删除”重复“的请求，所以在最后几次进入时requestArray中已经没有元素了
-            if (self.requestArray.count > 0) {
-                self.currentRequest = [self.requestArray firstObject];
-                self.currentCallback = [self.requestCallbackArray firstObject];
-                [self.requestArray removeObjectAtIndex:0];
-                [self.requestCallbackArray removeObjectAtIndex:0];
-                self.currentRequest.delegate = self;
-                [self.currentRequest clearCompletionBlock];
-                [self.currentRequest start];
-                NSLog(@"%@:当前执行的网络请求: %@", [NSThread currentThread], self.currentRequest);
+            if (weakSelf.requestArray.count > 0) {
+                weakSelf.currentRequest = [weakSelf.requestArray firstObject];
+                weakSelf.currentCallback = [weakSelf.requestCallbackArray firstObject];
+                [weakSelf.requestArray removeObjectAtIndex:0];
+                [weakSelf.requestCallbackArray removeObjectAtIndex:0];
+                weakSelf.currentRequest.delegate = weakSelf;
+                [weakSelf.currentRequest clearCompletionBlock];
+                [weakSelf.currentRequest start];
+                NSLog(@"%@:当前执行的网络请求: %@", [NSThread currentThread], weakSelf.currentRequest);
             }
             
             // 网络请求队列锁释放
-            dispatch_semaphore_signal(self.requestArrayLock);
+            if (weakSelf) {
+                dispatch_semaphore_signal(weakSelf.requestArrayLock);
+            } else {
+                return;
+            }
+            
         }
     });
 }
 
 - (void)addRequest:(YTKBaseRequest *)request callback:(XCChainCallback)callback {
+    __weak typeof(self) weakSelf = self;
     dispatch_async(self.addRequstQueue, ^{
         
         // 网络请求队列加锁
-        dispatch_semaphore_wait(self.requestArrayLock, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(weakSelf.requestArrayLock, DISPATCH_TIME_FOREVER);
         
-        if (self.compareBlk) {
+        if (weakSelf.compareBlk) {
             // 比较新加网络请求和当前网络请求是否可以复用
-            if (self.currentRequest && self.compareBlk(self.currentRequest, request)) {
-                NSLog(@"%@:删除当前网络请求: %@", [NSThread currentThread], self.currentRequest);
-                [self.currentRequest stop];
+            if (weakSelf.currentRequest && weakSelf.compareBlk(weakSelf.currentRequest, request)) {
+                NSLog(@"%@:删除当前网络请求: %@", [NSThread currentThread], weakSelf.currentRequest);
+                [weakSelf.currentRequest stop];
                 // 取消的任务YTKNetwork不会去执行request的失败回调，需要手动调用
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self requestFailed:self.currentRequest];
+                    [weakSelf requestFailed:weakSelf.currentRequest];
                 });
             }
             // 比较新加网络请求和请求列表中的网络请求是否可以复用
-            for (NSInteger i = self.requestArray.count - 1; i >= 0; i--) {
-                if (self.compareBlk(self.requestArray[i], request)) {
-                    NSLog(@"%@:删除网络请求队列中的网络请求: %@", [NSThread currentThread], self.requestArray[i]);
-                    [self.requestArray removeObjectAtIndex:i];
-                    [self.requestCallbackArray removeObjectAtIndex:i];
+            for (NSInteger i = weakSelf.requestArray.count - 1; i >= 0; i--) {
+                if (weakSelf.compareBlk(weakSelf.requestArray[i], request)) {
+                    NSLog(@"%@:删除网络请求队列中的网络请求: %@", [NSThread currentThread], weakSelf.requestArray[i]);
+                    [weakSelf.requestArray removeObjectAtIndex:i];
+                    [weakSelf.requestCallbackArray removeObjectAtIndex:i];
                 }
             }
         }
         
-        [self.requestArray addObject:request];
+        [weakSelf.requestArray addObject:request];
         if (callback != nil) {
-            [self.requestCallbackArray addObject:callback];
+            [weakSelf.requestCallbackArray addObject:callback];
         } else {
-            [self.requestCallbackArray addObject:self.emptyCallback];
+            [weakSelf.requestCallbackArray addObject:weakSelf.emptyCallback];
         }
         
         // 网络请求队列锁释放
-        dispatch_semaphore_signal(self.requestArrayLock);
+        dispatch_semaphore_signal(weakSelf.requestArrayLock);
         
         // 请求信号量+1
-        dispatch_semaphore_signal(self.requestSemaphore);
+        dispatch_semaphore_signal(weakSelf.requestSemaphore);
     });
 }
 

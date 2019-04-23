@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class XCChainRequest;
 @class YTKBaseRequest;
 
-typedef void(^XCChainCallback)(XCChainRequest *chainRequest, YTKBaseRequest *baseRequest);
+
 
 typedef BOOL(^XCRequestCompareBlk)(YTKBaseRequest *requestA, YTKBaseRequest *requestB);
 
@@ -27,7 +27,7 @@ typedef BOOL(^XCRequestCompareBlk)(YTKBaseRequest *requestA, YTKBaseRequest *req
 ///**
 // 结束链式请求队列
 // */
-//- (void)stop;
+- (void)stop;
 
 - (instancetype)initWithRequestCompareBlk:(nullable XCRequestCompareBlk)blk NS_DESIGNATED_INITIALIZER;
 

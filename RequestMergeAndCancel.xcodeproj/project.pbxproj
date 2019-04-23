@@ -17,6 +17,7 @@
 		8ED475F4226EB4EB008591C6 /* Test2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F3226EB4EB008591C6 /* Test2Request.m */; };
 		8ED475F7226EC4BE008591C6 /* XCChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F6226EC4BE008591C6 /* XCChainRequest.m */; };
 		8ED475FA226F2937008591C6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F9226F2937008591C6 /* TestViewController.m */; };
+		E96D56C3226F6BA100F94C7D /* XCChainRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D56C2226F6BA100F94C7D /* XCChainRequestManager.m */; };
 		EEC1B437F167AF7EE3B8A823 /* libPods-RequestMergeAndCancel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		8ED475F9226F2937008591C6 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RequestMergeAndCancel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C143D71C9020EAB0F0F02F02 /* Pods-RequestMergeAndCancel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestMergeAndCancel.debug.xcconfig"; path = "Target Support Files/Pods-RequestMergeAndCancel/Pods-RequestMergeAndCancel.debug.xcconfig"; sourceTree = "<group>"; };
+		E96D56C1226F6BA100F94C7D /* XCChainRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCChainRequestManager.h; sourceTree = "<group>"; };
+		E96D56C2226F6BA100F94C7D /* XCChainRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCChainRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				8ED475F6226EC4BE008591C6 /* XCChainRequest.m */,
 				8ED475F8226F2937008591C6 /* TestViewController.h */,
 				8ED475F9226F2937008591C6 /* TestViewController.m */,
+				E96D56C1226F6BA100F94C7D /* XCChainRequestManager.h */,
+				E96D56C2226F6BA100F94C7D /* XCChainRequestManager.m */,
 			);
 			path = RequestMergeAndCancel;
 			sourceTree = "<group>";
@@ -187,15 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-RequestMergeAndCancel-checkManifestLockResult.txt",
 			);
@@ -215,6 +216,7 @@
 				8ED475DE226EAAA8008591C6 /* ViewController.m in Sources */,
 				8ED475FA226F2937008591C6 /* TestViewController.m in Sources */,
 				8ED475F1226EACBC008591C6 /* TestRequest.m in Sources */,
+				E96D56C3226F6BA100F94C7D /* XCChainRequestManager.m in Sources */,
 				8ED475E9226EAAAA008591C6 /* main.m in Sources */,
 				8ED475F7226EC4BE008591C6 /* XCChainRequest.m in Sources */,
 				8ED475DB226EAAA8008591C6 /* AppDelegate.m in Sources */,
@@ -361,7 +363,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NE8VK2242L;
 				INFOPLIST_FILE = RequestMergeAndCancel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +382,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NE8VK2242L;
 				INFOPLIST_FILE = RequestMergeAndCancel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

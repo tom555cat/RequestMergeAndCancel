@@ -14,6 +14,8 @@
 
 @interface TestViewController ()
 
+@property (nonatomic, strong) XCChainRequest *chainRequest;
+
 @end
 
 @implementation TestViewController
@@ -25,8 +27,9 @@
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = @"http://fe.corp.daling.com/";
     
+    __weak typeof(self) weakSelf = self;
     XCChainRequest *xcchain = [[XCChainRequest alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest * _Nonnull requestA, YTKBaseRequest * _Nonnull requestB) {
-        return [self compareRequestA:requestA withRequestB:requestB];
+        return [weakSelf compareRequestA:requestA withRequestB:requestB];
     }];
     
     TestRequest *request = [[TestRequest alloc] init];
@@ -43,6 +46,14 @@
     [xcchain addRequest:request3 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
         NSLog(@"3");
     }];
+    
+    self.chainRequest = xcchain;
+}
+
+- (void)dealloc {
+    NSLog(@"testVC dealloc!");
+    [self.chainRequest stop];
+    self.chainRequest = nil;
 }
 
 - (BOOL)compareRequestA:(YTKBaseRequest *)requestA
