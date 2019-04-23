@@ -13,9 +13,15 @@
 		8ED475E3226EAAAA008591C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED475E2226EAAAA008591C6 /* Assets.xcassets */; };
 		8ED475E6226EAAAA008591C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED475E4226EAAAA008591C6 /* LaunchScreen.storyboard */; };
 		8ED475E9226EAAAA008591C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475E8226EAAAA008591C6 /* main.m */; };
+		8ED475F1226EACBC008591C6 /* TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F0226EACBC008591C6 /* TestRequest.m */; };
+		8ED475F4226EB4EB008591C6 /* Test2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F3226EB4EB008591C6 /* Test2Request.m */; };
+		8ED475F7226EC4BE008591C6 /* XCChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F6226EC4BE008591C6 /* XCChainRequest.m */; };
+		8ED475FA226F2937008591C6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F9226F2937008591C6 /* TestViewController.m */; };
+		EEC1B437F167AF7EE3B8A823 /* libPods-RequestMergeAndCancel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		820FCED51B14EB7B88B3AA33 /* Pods-RequestMergeAndCancel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestMergeAndCancel.release.xcconfig"; path = "Target Support Files/Pods-RequestMergeAndCancel/Pods-RequestMergeAndCancel.release.xcconfig"; sourceTree = "<group>"; };
 		8ED475D6226EAAA8008591C6 /* RequestMergeAndCancel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RequestMergeAndCancel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED475D9226EAAA8008591C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8ED475DA226EAAA8008591C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +32,16 @@
 		8ED475E5226EAAAA008591C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED475E7226EAAAA008591C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ED475E8226EAAAA008591C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8ED475EF226EACBC008591C6 /* TestRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRequest.h; sourceTree = "<group>"; };
+		8ED475F0226EACBC008591C6 /* TestRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRequest.m; sourceTree = "<group>"; };
+		8ED475F2226EB4EB008591C6 /* Test2Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2Request.h; sourceTree = "<group>"; };
+		8ED475F3226EB4EB008591C6 /* Test2Request.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2Request.m; sourceTree = "<group>"; };
+		8ED475F5226EC4BE008591C6 /* XCChainRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCChainRequest.h; sourceTree = "<group>"; };
+		8ED475F6226EC4BE008591C6 /* XCChainRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCChainRequest.m; sourceTree = "<group>"; };
+		8ED475F8226F2937008591C6 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		8ED475F9226F2937008591C6 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RequestMergeAndCancel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C143D71C9020EAB0F0F02F02 /* Pods-RequestMergeAndCancel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestMergeAndCancel.debug.xcconfig"; path = "Target Support Files/Pods-RequestMergeAndCancel/Pods-RequestMergeAndCancel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEC1B437F167AF7EE3B8A823 /* libPods-RequestMergeAndCancel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +61,8 @@
 			children = (
 				8ED475D8226EAAA8008591C6 /* RequestMergeAndCancel */,
 				8ED475D7226EAAA8008591C6 /* Products */,
+				F566DB6DBE5F589FFAA5382C /* Pods */,
+				AB9D3B16BFF384F20BFB8D37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,8 +86,33 @@
 				8ED475E4226EAAAA008591C6 /* LaunchScreen.storyboard */,
 				8ED475E7226EAAAA008591C6 /* Info.plist */,
 				8ED475E8226EAAAA008591C6 /* main.m */,
+				8ED475EF226EACBC008591C6 /* TestRequest.h */,
+				8ED475F0226EACBC008591C6 /* TestRequest.m */,
+				8ED475F2226EB4EB008591C6 /* Test2Request.h */,
+				8ED475F3226EB4EB008591C6 /* Test2Request.m */,
+				8ED475F5226EC4BE008591C6 /* XCChainRequest.h */,
+				8ED475F6226EC4BE008591C6 /* XCChainRequest.m */,
+				8ED475F8226F2937008591C6 /* TestViewController.h */,
+				8ED475F9226F2937008591C6 /* TestViewController.m */,
 			);
 			path = RequestMergeAndCancel;
+			sourceTree = "<group>";
+		};
+		AB9D3B16BFF384F20BFB8D37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F566DB6DBE5F589FFAA5382C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C143D71C9020EAB0F0F02F02 /* Pods-RequestMergeAndCancel.debug.xcconfig */,
+				820FCED51B14EB7B88B3AA33 /* Pods-RequestMergeAndCancel.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +122,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8ED475EC226EAAAA008591C6 /* Build configuration list for PBXNativeTarget "RequestMergeAndCancel" */;
 			buildPhases = (
+				858441B7DAD44D4F264F7C95 /* [CP] Check Pods Manifest.lock */,
 				8ED475D2226EAAA8008591C6 /* Sources */,
 				8ED475D3226EAAA8008591C6 /* Frameworks */,
 				8ED475D4226EAAA8008591C6 /* Resources */,
@@ -136,13 +181,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		858441B7DAD44D4F264F7C95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RequestMergeAndCancel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8ED475D2226EAAA8008591C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED475F4226EB4EB008591C6 /* Test2Request.m in Sources */,
 				8ED475DE226EAAA8008591C6 /* ViewController.m in Sources */,
+				8ED475FA226F2937008591C6 /* TestViewController.m in Sources */,
+				8ED475F1226EACBC008591C6 /* TestRequest.m in Sources */,
 				8ED475E9226EAAAA008591C6 /* main.m in Sources */,
+				8ED475F7226EC4BE008591C6 /* XCChainRequest.m in Sources */,
 				8ED475DB226EAAA8008591C6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +357,7 @@
 		};
 		8ED475ED226EAAAA008591C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C143D71C9020EAB0F0F02F02 /* Pods-RequestMergeAndCancel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +374,7 @@
 		};
 		8ED475EE226EAAAA008591C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 820FCED51B14EB7B88B3AA33 /* Pods-RequestMergeAndCancel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
