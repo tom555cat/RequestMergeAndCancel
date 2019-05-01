@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YTKBaseRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,30 +15,34 @@ NS_ASSUME_NONNULL_BEGIN
 @class YTKBaseRequest;
 
 
-
 typedef BOOL(^XCRequestCompareBlk)(YTKBaseRequest *requestA, YTKBaseRequest *requestB);
 
 @interface XCChainRequest : NSObject
 
-///**
-// 启动链式队里请求
-// */
-//- (void)start;
-//
-///**
-// 结束链式请求队列
-// */
+
+/**
+ 结束链式请求队列
+ */
 - (void)stop;
 
+/**
+ 初始化函数
+
+ @param blk 比较网络请求是否是重复网络请求的block
+ @return 返回对象
+ */
 - (instancetype)initWithRequestCompareBlk:(nullable XCRequestCompareBlk)blk NS_DESIGNATED_INITIALIZER;
 
 /**
- 增加网络请求到链式请求中
+ 添加网络请求
 
- @param request 网络请求
- @param callback 网络请求执行完毕的回调
+ @param request 新增加的网络请求
+ @param successBlk 网络请求的成功回调
+ @param failureBlk 网络请求的失败回调
  */
-- (void)addRequest:(YTKBaseRequest *)request callback:(nullable XCChainCallback)callback;
+- (void)addRequest:(YTKBaseRequest *)request
+           success:(YTKRequestCompletionBlock)successBlk
+           failure:(YTKRequestCompletionBlock)failureBlk;
 
 @end
 

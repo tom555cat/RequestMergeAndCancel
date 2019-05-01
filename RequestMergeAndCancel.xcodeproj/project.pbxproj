@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2246CF22783D7F00E1F82F /* XCChainRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2246CB22783D7E00E1F82F /* XCChainRequestManager.m */; };
+		8E2246D022783D7F00E1F82F /* XCChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2246CE22783D7F00E1F82F /* XCChainRequest.m */; };
+		8E224703227846DC00E1F82F /* GCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E224702227846DC00E1F82F /* GCDViewController.m */; };
 		8ED475DB226EAAA8008591C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475DA226EAAA8008591C6 /* AppDelegate.m */; };
 		8ED475DE226EAAA8008591C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475DD226EAAA8008591C6 /* ViewController.m */; };
 		8ED475E1226EAAA8008591C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED475DF226EAAA8008591C6 /* Main.storyboard */; };
@@ -15,14 +18,20 @@
 		8ED475E9226EAAAA008591C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475E8226EAAAA008591C6 /* main.m */; };
 		8ED475F1226EACBC008591C6 /* TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F0226EACBC008591C6 /* TestRequest.m */; };
 		8ED475F4226EB4EB008591C6 /* Test2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F3226EB4EB008591C6 /* Test2Request.m */; };
-		8ED475F7226EC4BE008591C6 /* XCChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F6226EC4BE008591C6 /* XCChainRequest.m */; };
 		8ED475FA226F2937008591C6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED475F9226F2937008591C6 /* TestViewController.m */; };
-		E96D56C3226F6BA100F94C7D /* XCChainRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E96D56C2226F6BA100F94C7D /* XCChainRequestManager.m */; };
+		8ED4768C2270411B008591C6 /* CCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4768B2270411B008591C6 /* CCManager.m */; };
 		EEC1B437F167AF7EE3B8A823 /* libPods-RequestMergeAndCancel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		820FCED51B14EB7B88B3AA33 /* Pods-RequestMergeAndCancel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestMergeAndCancel.release.xcconfig"; path = "Target Support Files/Pods-RequestMergeAndCancel/Pods-RequestMergeAndCancel.release.xcconfig"; sourceTree = "<group>"; };
+		8E2246CB22783D7E00E1F82F /* XCChainRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCChainRequestManager.m; sourceTree = "<group>"; };
+		8E2246CC22783D7F00E1F82F /* XCChainRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCChainRequest.h; sourceTree = "<group>"; };
+		8E2246CD22783D7F00E1F82F /* XCChainRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCChainRequestManager.h; sourceTree = "<group>"; };
+		8E2246CE22783D7F00E1F82F /* XCChainRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCChainRequest.m; sourceTree = "<group>"; };
+		8E2247002278429000E1F82F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8E224701227846DC00E1F82F /* GCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDViewController.h; sourceTree = "<group>"; };
+		8E224702227846DC00E1F82F /* GCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDViewController.m; sourceTree = "<group>"; };
 		8ED475D6226EAAA8008591C6 /* RequestMergeAndCancel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RequestMergeAndCancel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED475D9226EAAA8008591C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8ED475DA226EAAA8008591C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -37,14 +46,12 @@
 		8ED475F0226EACBC008591C6 /* TestRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRequest.m; sourceTree = "<group>"; };
 		8ED475F2226EB4EB008591C6 /* Test2Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2Request.h; sourceTree = "<group>"; };
 		8ED475F3226EB4EB008591C6 /* Test2Request.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2Request.m; sourceTree = "<group>"; };
-		8ED475F5226EC4BE008591C6 /* XCChainRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCChainRequest.h; sourceTree = "<group>"; };
-		8ED475F6226EC4BE008591C6 /* XCChainRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCChainRequest.m; sourceTree = "<group>"; };
 		8ED475F8226F2937008591C6 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		8ED475F9226F2937008591C6 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		8ED4768A2270411B008591C6 /* CCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCManager.h; sourceTree = "<group>"; };
+		8ED4768B2270411B008591C6 /* CCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCManager.m; sourceTree = "<group>"; };
 		A6305B9D74766135DA07DA1A /* libPods-RequestMergeAndCancel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RequestMergeAndCancel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C143D71C9020EAB0F0F02F02 /* Pods-RequestMergeAndCancel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestMergeAndCancel.debug.xcconfig"; path = "Target Support Files/Pods-RequestMergeAndCancel/Pods-RequestMergeAndCancel.debug.xcconfig"; sourceTree = "<group>"; };
-		E96D56C1226F6BA100F94C7D /* XCChainRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCChainRequestManager.h; sourceTree = "<group>"; };
-		E96D56C2226F6BA100F94C7D /* XCChainRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCChainRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,13 @@
 		8ED475D8226EAAA8008591C6 /* RequestMergeAndCancel */ = {
 			isa = PBXGroup;
 			children = (
+				8E2247002278429000E1F82F /* PrefixHeader.pch */,
+				8E2246CC22783D7F00E1F82F /* XCChainRequest.h */,
+				8E2246CE22783D7F00E1F82F /* XCChainRequest.m */,
+				8E2246CD22783D7F00E1F82F /* XCChainRequestManager.h */,
+				8E2246CB22783D7E00E1F82F /* XCChainRequestManager.m */,
+				8ED4768A2270411B008591C6 /* CCManager.h */,
+				8ED4768B2270411B008591C6 /* CCManager.m */,
 				8ED475D9226EAAA8008591C6 /* AppDelegate.h */,
 				8ED475DA226EAAA8008591C6 /* AppDelegate.m */,
 				8ED475DC226EAAA8008591C6 /* ViewController.h */,
@@ -93,12 +107,10 @@
 				8ED475F0226EACBC008591C6 /* TestRequest.m */,
 				8ED475F2226EB4EB008591C6 /* Test2Request.h */,
 				8ED475F3226EB4EB008591C6 /* Test2Request.m */,
-				8ED475F5226EC4BE008591C6 /* XCChainRequest.h */,
-				8ED475F6226EC4BE008591C6 /* XCChainRequest.m */,
 				8ED475F8226F2937008591C6 /* TestViewController.h */,
 				8ED475F9226F2937008591C6 /* TestViewController.m */,
-				E96D56C1226F6BA100F94C7D /* XCChainRequestManager.h */,
-				E96D56C2226F6BA100F94C7D /* XCChainRequestManager.m */,
+				8E224701227846DC00E1F82F /* GCDViewController.h */,
+				8E224702227846DC00E1F82F /* GCDViewController.m */,
 			);
 			path = RequestMergeAndCancel;
 			sourceTree = "<group>";
@@ -213,13 +225,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED475F4226EB4EB008591C6 /* Test2Request.m in Sources */,
+				8E2246D022783D7F00E1F82F /* XCChainRequest.m in Sources */,
 				8ED475DE226EAAA8008591C6 /* ViewController.m in Sources */,
+				8E224703227846DC00E1F82F /* GCDViewController.m in Sources */,
 				8ED475FA226F2937008591C6 /* TestViewController.m in Sources */,
 				8ED475F1226EACBC008591C6 /* TestRequest.m in Sources */,
-				E96D56C3226F6BA100F94C7D /* XCChainRequestManager.m in Sources */,
+				8E2246CF22783D7F00E1F82F /* XCChainRequestManager.m in Sources */,
 				8ED475E9226EAAAA008591C6 /* main.m in Sources */,
-				8ED475F7226EC4BE008591C6 /* XCChainRequest.m in Sources */,
 				8ED475DB226EAAA8008591C6 /* AppDelegate.m in Sources */,
+				8ED4768C2270411B008591C6 /* CCManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +387,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-23123.RequestMergeAndCancel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				asdadadasda = "";
 			};
 			name = Debug;
 		};
@@ -392,6 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-23123.RequestMergeAndCancel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				asdadadasda = "";
 			};
 			name = Release;
 		};

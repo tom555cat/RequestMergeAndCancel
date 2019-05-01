@@ -13,6 +13,7 @@
 #import "Test2Request.h"
 #import "XCChainRequest.h"
 #import "TestViewController.h"
+#import "GCDViewController.h"
 
 @interface ViewController () <YTKChainRequestDelegate>
 
@@ -24,8 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-//    config.baseUrl = @"http://fe.corp.daling.com/";
+    [self test1];
 //
 //    XCChainRequest *xcchain = [[XCChainRequest alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest * _Nonnull requestA, YTKBaseRequest * _Nonnull requestB) {
 //        return [self compareRequestA:requestA withRequestB:requestB];
@@ -48,8 +48,12 @@
 }
 
 - (IBAction)jumpToAnother:(id)sender {
-    TestViewController *vc = [[TestViewController alloc] init];
-    vc.view.backgroundColor = [UIColor redColor];
+//    TestViewController *vc = [[TestViewController alloc] init];
+//    vc.view.backgroundColor = [UIColor redColor];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    GCDViewController *vc = [[GCDViewController alloc] init];
+    vc.view.backgroundColor = [UIColor yellowColor];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -98,6 +102,7 @@
 //}
 
 - (void)chainRequestFinished:(YTKChainRequest *)chainRequest {
+    [chainRequest stop];
     NSLog(@"chainRequest finished!");
 }
 
@@ -110,47 +115,47 @@
  检查重复网络请求取消
  */
 - (void)test3 {
-    XCChainRequest *xcchain = [[XCChainRequest alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest * _Nonnull requestA, YTKBaseRequest * _Nonnull requestB) {
-        return [self compareRequestA:requestA withRequestB:requestB];
-    }];
-    
-    TestRequest *request = [[TestRequest alloc] init];
-    [xcchain addRequest:request callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-        NSLog(@"1");
-    }];
-    
-    TestRequest *request2 = [[TestRequest alloc] init];
-    [xcchain addRequest:request2 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-        NSLog(@"2");
-    }];
-    
-    TestRequest *request3 = [[TestRequest alloc] init];
-    [xcchain addRequest:request3 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-        NSLog(@"3");
-    }];
+//    XCChainRequest *xcchain = [[XCChainRequest alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest * _Nonnull requestA, YTKBaseRequest * _Nonnull requestB) {
+//        return [self compareRequestA:requestA withRequestB:requestB];
+//    }];
+//
+//    TestRequest *request = [[TestRequest alloc] init];
+//    [xcchain addRequest:request callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//        NSLog(@"1");
+//    }];
+//
+//    TestRequest *request2 = [[TestRequest alloc] init];
+//    [xcchain addRequest:request2 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//        NSLog(@"2");
+//    }];
+//
+//    TestRequest *request3 = [[TestRequest alloc] init];
+//    [xcchain addRequest:request3 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//        NSLog(@"3");
+//    }];
 }
 
 /**
  开启就会等待执行，如果没有网络请求加入，就进入睡眠；如果有网络请求则执行网络请求
  */
 - (void)test2 {
-    XCChainRequest *xcchain = [[XCChainRequest alloc] init];
-    TestRequest *request = [[TestRequest alloc] init];
-    [xcchain addRequest:request callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-        NSLog(@"1");
-    }];
-    
-    TestRequest *request2 = [[TestRequest alloc] init];
-    [xcchain addRequest:request2 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-        NSLog(@"2");
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            TestRequest *request3 = [[TestRequest alloc] init];
-            [xcchain addRequest:request3 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-                NSLog(@"3");
-            }];
-        });
-    }];
+//    XCChainRequest *xcchain = [[XCChainRequest alloc] init];
+//    TestRequest *request = [[TestRequest alloc] init];
+//    [xcchain addRequest:request callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//        NSLog(@"1");
+//    }];
+//    
+//    TestRequest *request2 = [[TestRequest alloc] init];
+//    [xcchain addRequest:request2 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//        NSLog(@"2");
+//        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            TestRequest *request3 = [[TestRequest alloc] init];
+//            [xcchain addRequest:request3 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//                NSLog(@"3");
+//            }];
+//        });
+//    }];
 }
 
 
@@ -158,6 +163,10 @@
  测试YTK的链式请求
  */
 - (void)test1 {
+    
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = @"http://fe.corp.daling.com/";
+    
     // 第一个请求
     TestRequest *request = [[TestRequest alloc] init];
     [request setCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -181,13 +190,9 @@
     chainRequest.delegate = self;
     [chainRequest addRequest:request callback:^(YTKChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
         NSLog(@"请求1完成");
-        //NSLog(@"%@", baseRequest.requestUrl);
-        //NSLog(@"%@", baseRequest.responseObject);
     }];
     [chainRequest addRequest:request2 callback:^(YTKChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
         NSLog(@"请求2完成");
-        //NSLog(@"%@", baseRequest.requestUrl);
-        //NSLog(@"%@", baseRequest.responseObject);
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
@@ -207,7 +212,6 @@
     
     
     [chainRequest start];
-    [request stop];
 }
 
 @end
