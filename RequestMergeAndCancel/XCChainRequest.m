@@ -90,17 +90,36 @@ static NSString *const kXCChainRequestFailCallbackKey = @"fail";
     [self.requestArray removeAllObjects];
     [self.requestCallbackArray removeAllObjects];
     // 停止当前网络请求
-    [self.currentRequest stop];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSError *error = [NSError errorWithDomain:XCChainRequestCancel code:XCChainREquestErrorCancel userInfo:@{NSLocalizedDescriptionKey:@"request cancel"}];
-        [self.currentRequest setValue:error forKey:@"error"];
-        [self requestFailed:self.currentRequest];
-    });
+    if (self.currentRequest) {
+        [self.currentRequest stop];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError *error = [NSError errorWithDomain:XCChainRequestCancel code:XCChainREquestErrorCancel userInfo:@{NSLocalizedDescriptionKey:@"request cancel"}];
+            [self.currentRequest setValue:error forKey:@"error"];
+            [self requestFailed:self.currentRequest];
+        });
+    }
     // 添加网络请求信号量和网络请求处理信号量+1，以便于start中的while循环进行下去
     dispatch_semaphore_signal(self.requestSemaphore);
     //NSLog(@"requestSemaphore +1");
     dispatch_semaphore_signal(self.requestArrayLock);
     //NSLog(@"requestArrayLock +1");
+}
+
+- (void)cancelAllRequests {
+    dispatch_semaphore_wait(self.requestArrayLock, DISPATCH_TIME_FOREVER);
+    // 移出网络请求和回调
+    [self.requestArray removeAllObjects];
+    [self.requestCallbackArray removeAllObjects];
+    // 停止当前网络请求
+    if (self.currentRequest) {
+        [self.currentRequest stop];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError *error = [NSError errorWithDomain:XCChainRequestCancel code:XCChainREquestErrorCancel userInfo:@{NSLocalizedDescriptionKey:@"request cancel"}];
+            [self.currentRequest setValue:error forKey:@"error"];
+            [self requestFailed:self.currentRequest];
+        });
+    }
+    dispatch_semaphore_signal(self.requestArrayLock);
 }
 
 - (void)dealloc {

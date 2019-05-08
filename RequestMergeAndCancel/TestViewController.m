@@ -40,6 +40,11 @@
     [button2 addTarget:self action:@selector(addNewRequest2:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button2];
     
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setTitle:@"取消请求" forState:UIControlStateNormal];
+    cancelButton.frame = CGRectMake(0, 300, 100, 50);
+    [cancelButton addTarget:self action:@selector(cancelAllRequests) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelButton];
     
 //    CCManager *manager = [CCManager sharedInstance];
 //    NSLog(@"%@", manager);
@@ -49,39 +54,13 @@
     
     __weak typeof(self) weakSelf = self;
     
-    XCChainRequestManager *m = [[XCChainRequestManager alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest *requst1, YTKBaseRequest *requst2) {
-        return [weakSelf compareRequestA:requst1 withRequestB:requst2];
-    }];
+//    XCChainRequestManager *m = [[XCChainRequestManager alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest *requst1, YTKBaseRequest *requst2) {
+//        return [weakSelf compareRequestA:requst1 withRequestB:requst2];
+//    }];
+    
+    XCChainRequestManager *m = [[XCChainRequestManager alloc] initWithRequestCompareBlk:nil];
     
     NSLog(@"123");
-    
-    TestRequest *request = [[TestRequest alloc] init];
-    [m addRequest:request success:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"1 success!");
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"1 fail!");
-    }];
-    
-    TestRequest *request2 = [[TestRequest alloc] init];
-    [m addRequest:request2 success:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"2 success!");
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"2 fail!");
-    }];
-
-    Test2Request *request3 = [[Test2Request alloc] init];
-    [m addRequest:request3 success:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"3 success!");
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"3 failed!");
-    }];
-
-    TestRequest *request4 = [[TestRequest alloc] init];
-    [m addRequest:request4 success:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"4 sucess!");
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"4 fail!");
-    }];
     
     self.chainRequest = m;
 }
@@ -90,11 +69,16 @@
     NSLog(@"testVC dealloc!");
 }
 
+- (void)cancelAllRequests {
+    [self.chainRequest cancelAllRequests];
+}
+
 - (void)addNewRequest:(id)sender {
     static int a = 100;
     TestRequest *request = [[TestRequest alloc] init];
     [self.chainRequest addRequest:request success:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"--%d 成功!", a);
+        NSLog(@"%@", [NSThread currentThread]);
         a += 1;
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"--%d 失败!, %@", a, request.error.userInfo[NSLocalizedDescriptionKey]);
@@ -107,12 +91,43 @@
     Test2Request *request = [[Test2Request alloc] init];
     [self.chainRequest addRequest:request success:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"--%d 成功!", b);
+        NSLog(@"%@", [NSThread currentThread]);
         b += 1;
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"--%d 失败!, %@", b, request.error.userInfo[NSLocalizedDescriptionKey]);
         b += 1;
     }];
 }
+
+//- (void)test3 {
+//    TestRequest *request = [[TestRequest alloc] init];
+//    [m addRequest:request success:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"1 success!");
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"1 fail!");
+//    }];
+//
+//    TestRequest *request2 = [[TestRequest alloc] init];
+//    [m addRequest:request2 success:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"2 success!");
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"2 fail!");
+//    }];
+//
+//    Test2Request *request3 = [[Test2Request alloc] init];
+//    [m addRequest:request3 success:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"3 success!");
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"3 failed!");
+//    }];
+//
+//    TestRequest *request4 = [[TestRequest alloc] init];
+//    [m addRequest:request4 success:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"4 sucess!");
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"4 fail!");
+//    }];
+//}
 
 
 /**

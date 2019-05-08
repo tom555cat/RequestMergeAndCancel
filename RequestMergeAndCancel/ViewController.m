@@ -25,36 +25,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self test1];
-//
-//    XCChainRequest *xcchain = [[XCChainRequest alloc] initWithRequestCompareBlk:^BOOL(YTKBaseRequest * _Nonnull requestA, YTKBaseRequest * _Nonnull requestB) {
-//        return [self compareRequestA:requestA withRequestB:requestB];
-//    }];
-//
-//    TestRequest *request = [[TestRequest alloc] init];
-//    [xcchain addRequest:request callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-//        NSLog(@"1");
-//    }];
-//
-//    TestRequest *request2 = [[TestRequest alloc] init];
-//    [xcchain addRequest:request2 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-//        NSLog(@"2");
-//    }];
-//
-//    TestRequest *request3 = [[TestRequest alloc] init];
-//    [xcchain addRequest:request3 callback:^(XCChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
-//        NSLog(@"3");
-//    }];
 }
 
 - (IBAction)jumpToAnother:(id)sender {
-//    TestViewController *vc = [[TestViewController alloc] init];
-//    vc.view.backgroundColor = [UIColor redColor];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    GCDViewController *vc = [[GCDViewController alloc] init];
-    vc.view.backgroundColor = [UIColor yellowColor];
+    TestViewController *vc = [[TestViewController alloc] init];
+    vc.view.backgroundColor = [UIColor redColor];
     [self.navigationController pushViewController:vc animated:YES];
+    
+//    GCDViewController *vc = [[GCDViewController alloc] init];
+//    vc.view.backgroundColor = [UIColor yellowColor];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

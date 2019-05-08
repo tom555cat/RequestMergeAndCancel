@@ -14,22 +14,31 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - FBRetainCycleDetector (0.1.4)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - FBRetainCycleDetector
+  - MLeaksFinder
   - YTKNetwork
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - FBRetainCycleDetector
+    - MLeaksFinder
     - YTKNetwork
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: b1913417f219644d428dbcc9d47266b6ecb01437
+PODFILE CHECKSUM: c908cbf979b56b4d871ce204cd52c6718372467f
 
 COCOAPODS: 1.6.1

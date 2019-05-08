@@ -44,6 +44,11 @@ typedef BOOL(^XCRequestCompareBlk)(YTKBaseRequest *requestA, YTKBaseRequest *req
            success:(YTKRequestCompletionBlock)successBlk
            failure:(YTKRequestCompletionBlock)failureBlk;
 
+/**
+ 取消所有的网络请求
+ */
+- (void)cancelAllRequests;
+
 @end
 
 NS_ASSUME_NONNULL_END

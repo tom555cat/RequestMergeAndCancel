@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B7F097E4FC21F8440196BCE3D548689D"
+               BlueprintIdentifier = "A056EFCD31729AF90D17387E1C6060C0"
                BuildableName = "libPods-RequestMergeAndCancel.a"
                BlueprintName = "Pods-RequestMergeAndCancel"
                ReferencedContainer = "container:Pods.xcodeproj">

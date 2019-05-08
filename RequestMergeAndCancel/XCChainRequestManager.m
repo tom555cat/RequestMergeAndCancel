@@ -39,4 +39,8 @@
     [self.chainRequest addRequest:request success:successBlk failure:failureBlk];
 }
 
+- (void)cancelAllRequests {
+    [self.chainRequest cancelAllRequests];
+}
+
 @end

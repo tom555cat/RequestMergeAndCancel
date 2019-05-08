@@ -25,4 +25,10 @@
            success:(YTKRequestCompletionBlock)successBlk
            failure:(YTKRequestCompletionBlock)failureBlk;
 
+
+/**
+  取消所有的网络请求
+ */
+- (void)cancelAllRequests;
+
 @end

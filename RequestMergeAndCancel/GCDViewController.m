@@ -12,6 +12,9 @@
 
 @interface GCDViewController ()
 
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
+@property (nonatomic, strong) dispatch_queue_t queue;
+
 @end
 
 @implementation GCDViewController
@@ -25,8 +28,28 @@
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = @"http://fe.corp.daling.com/";
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSLog(@"%@", self);
+    self.semaphore = dispatch_semaphore_create(1);
+    self.queue = dispatch_queue_create("myqueu", DISPATCH_QUEUE_SERIAL);
+
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(self.queue, ^{
+        if (weakSelf == nil) {
+            return;
+        }
+        __strong GCDViewController *strongSelf = weakSelf;
+        dispatch_semaphore_wait(strongSelf.semaphore, DISPATCH_TIME_FOREVER);
+        [NSThread sleepForTimeInterval:10];
+        dispatch_semaphore_signal(strongSelf.semaphore);
+    });
+
+    dispatch_async(self.queue, ^{
+        if (weakSelf == nil) {
+            return;
+        }
+        __strong GCDViewController *strongSelf = weakSelf;
+        dispatch_semaphore_wait(strongSelf.semaphore, DISPATCH_TIME_FOREVER);
+        [NSThread sleepForTimeInterval:10];
+        dispatch_semaphore_signal(strongSelf.semaphore);
     });
     NSLog(@"");
 }
